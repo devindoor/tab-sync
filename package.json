@@ -1,0 +1,22 @@
+{
+  "name": "tab-sync",
+  "version": "1.0.0",
+  "description": "Tab synchronizer is a library that allow you tu communicate between multiple tabs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VarPDev/tab-sync.git"
+  },
+  "author": "Pasquale De Lucia | Francesco Bruno",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VarPDev/tab-sync/issues"
+  },
+  "homepage": "https://github.com/VarPDev/tab-sync#readme",
+  "devDependencies": {
+    "typescript": "^3.3.4000"
+  }
+}
