@@ -14,7 +14,7 @@ export function TabSync(tadId?: string) {
 
 function makeEmitter(tadId: string) {
   const emitter = new EventEmitter();
-  const originalEmit = emitter.sync;
+  const originalEmit = emitter.emit;
 
   emitter.sync = (event: string, data: data) => {
     const args = [event, data];
