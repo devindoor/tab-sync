@@ -11,7 +11,7 @@ function TabSync(tadId) {
 exports.TabSync = TabSync;
 function makeEmitter(tadId) {
     var emitter = new EventEmitter();
-    var originalEmit = emitter.sync;
+    var originalEmit = emitter.emit;
     emitter.sync = function (event, data) {
         var args = [event, data];
         localStorage.setItem(tadId, JSON.stringify(args));
