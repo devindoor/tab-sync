@@ -9,4 +9,4 @@ deploy:
   api_key: "fa2de90a-dfab-4b33-ba45-c09cdeefef1c"
   on:
     tags: true
-    branch: production
+    branch: master
