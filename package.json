@@ -1,6 +1,6 @@
 {
   "name": "tab-sync",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Tab synchronizer is a library that allow you tu communicate between multiple tabs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,5 +22,12 @@
   },
   "dependencies": {
     "@types/node": "^11.12.2"
-  }
+  },
+  "keywords": [
+    "tab",
+    "synchronize",
+    "tab synchronize",
+    "synchronizer",
+    "tab synchronizer"
+  ]
 }
