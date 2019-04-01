@@ -11,12 +11,13 @@ function makeEmitter(key: string) {
   const emitter = new EventEmitter();
   const originalEmit = emitter.emit;
 
-  emitter.emit = (params: any) => {
-    const args: any = [].slice.call(params);
+  emitter.emit = (event: string, data: any) => {
+    // const args: any = {event, ...data};
+    const args = [event,data];
     localStorage.setItem(key, JSON.stringify(args));
     localStorage.removeItem(key);
 
-    if (!!args && !!args[1] && !!args[1].applyOriginEmitter) {
+    if (!!data && !!data.applyOriginEmitter) {
       return originalEmit.apply(emitter, args);
     }
   };
