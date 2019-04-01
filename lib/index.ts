@@ -1,19 +1,23 @@
 const EventEmitter = require("events").EventEmitter;
-let emitters: any = {};
+const emitters: any = {};
 
-export function TabSync(key: string) {
-  key = "tabemitter" + (key || "");
-  if (!emitters[key]) emitters[key] = makeEmitter(key);
-  return emitters[key];
+interface data {
+  params: any | null;
+  applyOriginEmitter: boolean | null;
+}
+
+export function TabSync(tadId: string | null) {
+  tadId = `tabemitter${tadId || ""}`;
+  if (!emitters[tadId]) emitters[tadId] = makeEmitter(tadId);
+  return emitters[tadId];
 }
 
 function makeEmitter(key: string) {
   const emitter = new EventEmitter();
-  const originalEmit = emitter.emit;
+  const originalEmit = emitter.sync;
 
-  emitter.emit = (event: string, data: any) => {
-    // const args: any = {event, ...data};
-    const args = [event,data];
+  emitter.sync = (event: string, data: data) => {
+    const args = [event, data];
     localStorage.setItem(key, JSON.stringify(args));
     localStorage.removeItem(key);
 
@@ -21,6 +25,7 @@ function makeEmitter(key: string) {
       return originalEmit.apply(emitter, args);
     }
   };
+
   window.addEventListener("storage", ev => {
     if (ev.key === key && ev.newValue) {
       const args = JSON.parse(ev.newValue);
