@@ -12,7 +12,7 @@ IE 9, Google Chrome, Mozilla Firefox, Safari, Opera and the most updated browser
 
 first tab
 
-    import {TabSync} from 'tab-sync'
+    import {TabSync} from '@devhobby/tab-sync'
     const tabEmitter = TabSync()
 
     setTimeout(() => {
@@ -25,7 +25,7 @@ first tab
 
 second tab
 
-    import {TabSync} from 'tab-sync'
+    import {TabSync} from '@devhobby/tab-sync'
     const tabEmitter = TabSync()
 
     tabEmitter.on('hello', function (data) {
