@@ -1,1 +1,1 @@
-export declare function TabSync(key: string): any;
+export declare function TabSync(tadId?: string): any;
