@@ -8,11 +8,11 @@ interface data {
 
 export function TabSync(tadId?: string) {
   tadId = `tabemitter${tadId || ""}`;
-  if (!emitters[tadId]) emitters[tadId] = makeEmitter(tadId);
+  if (!emitters[tadId]) emitters[tadId] = makeSync(tadId);
   return emitters[tadId];
 }
 
-function makeEmitter(tadId: string) {
+function makeSync(tadId: string) {
   const emitter = new EventEmitter();
   const originalEmit = emitter.emit;
 
@@ -21,9 +21,9 @@ function makeEmitter(tadId: string) {
     localStorage.setItem(tadId, JSON.stringify(args));
     localStorage.removeItem(tadId);
 
-    if (!!data && !!data.applyOriginEmitter) {
-      return originalEmit.apply(emitter, args);
-    }
+    return (
+      !!data && !!data.applyOriginEmitter && originalEmit.apply(emitter, args)
+    );
   };
 
   window.addEventListener("storage", ev => {
