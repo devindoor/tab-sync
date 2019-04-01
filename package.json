@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Tab synchronizer is a library that allow you tu communicate between multiple tabs",
   "main": "dist/index.js",
-  "types" : "dist/index.d.ts",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc"
