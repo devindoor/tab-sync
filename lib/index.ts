@@ -6,20 +6,20 @@ interface data {
   applyOriginEmitter: boolean | null;
 }
 
-export function TabSync(tadId: string | null) {
+export function TabSync(tadId?: string) {
   tadId = `tabemitter${tadId || ""}`;
   if (!emitters[tadId]) emitters[tadId] = makeEmitter(tadId);
   return emitters[tadId];
 }
 
-function makeEmitter(key: string) {
+function makeEmitter(tadId: string) {
   const emitter = new EventEmitter();
   const originalEmit = emitter.sync;
 
   emitter.sync = (event: string, data: data) => {
     const args = [event, data];
-    localStorage.setItem(key, JSON.stringify(args));
-    localStorage.removeItem(key);
+    localStorage.setItem(tadId, JSON.stringify(args));
+    localStorage.removeItem(tadId);
 
     if (!!data && !!data.applyOriginEmitter) {
       return originalEmit.apply(emitter, args);
@@ -27,7 +27,7 @@ function makeEmitter(key: string) {
   };
 
   window.addEventListener("storage", ev => {
-    if (ev.key === key && ev.newValue) {
+    if (ev.key === tadId && ev.newValue) {
       const args = JSON.parse(ev.newValue);
       originalEmit.apply(emitter, args);
     }
