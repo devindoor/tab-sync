@@ -18,10 +18,10 @@
   },
   "homepage": "https://github.com/VarPDev/tab-sync#readme",
   "devDependencies": {
-    "typescript": "^3.3.4000"
+    "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@types/node": "^11.12.2"
+    "@types/node": "^20.8.10"
   },
   "keywords": [
     "tab",
